@@ -1,18 +1,31 @@
-import {createRouter, createWebHistory} from "vue-router";
-
-import SignUpPage from "@/pages/SignUpPage.vue";
-import LoginPage from "@/pages/LoginPage.vue";
-import LedgerPage from "@/pages/LedgerPage.vue";
+// ./src/router/index.js
+import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
-    { path: '/signup', component: SignUpPage },
-    { path: '/login', component: LoginPage },
-    { path: '/', component: LedgerPage }
+    {
+        path: '/login',
+        name: 'Login',
+        component: () => import('@/pages/LoginPage.vue'),
+    },
+    {
+        path: '/signup',
+        name: 'SignUp',
+        component: () => import('@/pages/SignUpPage.vue'),
+    },
+    {
+        path: '/ledger',
+        name: 'Ledger',
+        component: () => import('@/pages/LedgerPage.vue'),
+    },
+    {
+        path: '/',
+        redirect: '/login',
+    },
 ]
 
 const router = createRouter({
     history: createWebHistory(),
-    routes
+    routes,
 })
 
 export default router
